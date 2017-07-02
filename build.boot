@@ -1,15 +1,19 @@
-(set-env! :resource-paths #{"src"}
-          :dependencies '[[adzerk/bootlaces "0.1.13" :scope "test"]])
+(set-env! :source-paths #{"src"}
+          :dependencies '[[adzerk/bootlaces "0.1.13" :scope "test"]]
+          :repositories [["clojars" (cond-> {:url "https://clojars.org/repo/"}
+                                      (System/getenv "CLOJARS_USER")
+                                      (merge {:username (System/getenv "CLOJARS_USER")
+                                              :password (System/getenv "CLOJARS_PASS")}))]])
 
 (require '[boot.git :refer [last-commit]]
          '[adzerk.bootlaces :refer :all])
 
-(def +version+ "0.0.1")
+(def +version+ "0.0.1-SNAPSHOT")
 
 (bootlaces! +version+)
 
 (task-options!
-  push {:repo           "deploy"
+  push {:repo           "clojars"
         :ensure-branch  "master"
         :ensure-clean   true
         :ensure-tag     (last-commit)

@@ -1,6 +1,8 @@
 [class-names](https://github.com/JedWatson/classnames) for ClojureScript
 ===
 
+[![Clojars Project](https://img.shields.io/clojars/v/class-names.svg)](https://clojars.org/class-names)
+
 ```clojure
 (class-names "foo" "bar" :bax { :active true :seleced false })
 ; -> "foo bar bax active"

@@ -8,7 +8,7 @@
 (require '[boot.git :refer [last-commit]]
          '[adzerk.bootlaces :refer :all])
 
-(def +version+ "0.0.1-SNAPSHOT")
+(def +version+ "0.1.0")
 
 (bootlaces! +version+)
 
@@ -17,7 +17,8 @@
         :ensure-branch  "master"
         :ensure-clean   true
         :ensure-tag     (last-commit)
-        :ensure-version +version+}
+        :ensure-version +version+
+        :gpg-sign       false}
   pom  {:project        'class-names
         :version        +version+
         :description    "classnames-inspired helper for managing dynamic classes in Reagent and Re-frame apps"
